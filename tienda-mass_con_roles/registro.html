@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Personal - Tiendas Mass</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* =========================================
+        1. VARIABLES GLOBALES Y CUERPO
+    ========================================= */
+    :root {
+      --mass-amarillo: #FFD100;
+      --mass-amarillo-claro: #FFF7CC;
+      --mass-azul: #0033A0;
+      --mass-blanco: #FFFFFF;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: var(--mass-azul);
+      background-color: #f8f9fa;
+    }
+
+    /* =========================================
+        2. USO DE LAYOUTS (FLEXBOX Y GRID)
+    ========================================= */
+    .barra-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: var(--mass-blanco);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-enlaces {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* =========================================
+        3. USO DE 4 TRANSICIONES
+    ========================================= */
+    /* Transición 1: Enlaces del menú */
+    .nav-enlaces a {
+      text-decoration: none;
+      color: var(--mass-azul);
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-enlaces a:hover {
+      color: #d6b000;
+      transform: scale(1.1);
+    }
+
+    /* Transición 2: Botones */
+    .btn-mass {
+      background-color: var(--mass-amarillo);
+      color: var(--mass-azul);
+      border: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    .btn-mass:hover {
+      background-color: #ebd600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Transición 3: Entradas de formularios (inputs y selects) */
+    .form-control, .form-select {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--mass-azul);
+      box-shadow: 0 0 8px rgba(0, 51, 160, 0.4);
+    }
+
+    /* Transición 4: Tarjeta principal */
+    .main-card {
+      background-color: #ffffff;
+      border-radius: 6px;
+      overflow: hidden;
+      max-width: 850px;
+      margin: 0 auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .main-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    /* =========================================
+        4. USO DE 2 ANIMACIONES
+    ========================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .seccion {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    .header-yellow h4 {
+      animation: pulse 2.5s infinite;
+    }
+
+    /* =========================================
+        5. ESTILOS ESPECÍFICOS
+    ========================================= */
+    .header-yellow { background-color: var(--mass-amarillo); color: var(--mass-azul); padding: 18px; text-align: center; }
+    .form-label { color: #333333; font-size: 0.92rem; }
+    .text-asterisk { color: #dc3545; }
+
+    /* =========================================
+        6. DISEÑO RESPONSIVO (3 Dispositivos)
+    ========================================= */
+    @media (max-width: 991px) {
+      .main-card { margin: 0 15px; }
+      .header-yellow h4 { font-size: 1.5rem; }
+    }
+
+    @media (max-width: 767px) {
+      .barra-nav { flex-direction: column; text-align: center; gap: 15px; }
+      .nav-enlaces { flex-direction: column; width: 100%; gap: 10px; }
+      .main-card { margin: 0 10px; }
+      .header-yellow h4 { font-size: 1.25rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="mejoras.css">
+  <script src="datos.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Menú de navegación global con layout Flexbox -->
+<header class="encabezado bg-white">
+  <nav class="barra-nav">
+    <a href="index.html" class="marca" style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-decoration:none; font-weight:900;">TIENDA MASS</a>
+    <button type="button" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menuPrincipal">☰</button>
+    <ul id="menuPrincipal" class="nav-enlaces mb-0">
+      <li><a href="index.html">Acerca de nosotros</a></li>
+      <li><a href="productos.html">Productos y servicios</a></li>
+      <li><a href="registro.html" style="color: #d6b000;">Trabaja con nosotros</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Contenedor principal con animación de entrada -->
+<div class="container my-5 seccion">
+  <div class="card main-card shadow-sm border-0">
+    <div class="header-yellow">
+      <h4 class="mb-0 fw-bold">Registro de trabajador - Tiendas Mass</h4>
+    </div>
+    <div class="card-body p-4">
+      <p class="fw-bold text-muted small mb-4">Los campos marcados con asterisco (<span class="text-asterisk fw-bold">*</span>) son obligatorios.</p>
+      
+      <form id="formRegistro" novalidate>
+        <h5 class="border-bottom pb-2 mb-3 text-secondary">Datos Personales</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="nombres" class="form-label">Nombres <span class="text-asterisk">*</span></label>
+            <input type="text" class="form-control" id="nombres" placeholder="Ej. Juan Carlos">
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="apellidos" class="form-label">Apellidos <span class="text-asterisk">*</span></label>
+            <input type="text" class="form-control" id="apellidos" placeholder="Ej. Ramirez Gutierrez">
+          </div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="tipoDoc" class="form-label">Tipo de Documento <span class="text-asterisk">*</span></label>
+            <select class="form-select" id="tipoDoc">
+              <option selected disabled>Seleccionar</option>
+              <option value="DNI">DNI</option>
+              <option value="CE">Carnet de Extranjería</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="numDoc" class="form-label">N° de Documento <span class="text-asterisk">*</span></label>
+            <input type="text" class="form-control" id="numDoc" placeholder="12345678">
+          </div>
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-3 mt-4 text-secondary">Contacto y Residencia</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="telefono" class="form-label">Teléfono / Celular <span class="text-asterisk">*</span></label>
+            <input type="tel" class="form-control" id="telefono" maxlength="9" placeholder="987654321">
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="correo" class="form-label">Correo Electrónico <span class="text-asterisk">*</span></label>
+            <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección <span class="text-asterisk">*</span></label>
+          <input type="text" class="form-control" id="direccion" placeholder="Av., Calle, N° o Dpto.">
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-3 mt-4 text-secondary">Información Laboral</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="sede" class="form-label">Sede <span class="text-asterisk">*</span></label>
+            <select class="form-select" id="sede">
+              <option selected disabled>Seleccionar sede...</option>
+              <option value="Lima">Lima</option>
+              <option value="Arequipa">Arequipa</option>
+              <option value="Cusco">Cusco</option>
+              <option value="Ica">Ica</option>
+              <option value="Tumbes">Tumbes</option>
+              <option value="Huancavelica">Huancavelica</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="puesto" class="form-label">Puesto a Asignar <span class="text-asterisk">*</span></label>
+            <select class="form-select" id="puesto">
+              <option selected disabled>Seleccionar puesto...</option>
+              <option value="cajero">Cajero(a)</option>
+              <option value="reponedor">Reponedor</option>
+              <option value="administrador">Administrador de Tienda</option>
+              <option value="prevencion">Seguridad</option>
+            </select>
+          </div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="modalidad" class="form-label">Jornada Laboral <span class="text-asterisk">*</span></label>
+            <select class="form-select" id="modalidad">
+              <option selected disabled>Seleccionar jornada...</option>
+              <option value="full-time">Tiempo Completo</option>
+              <option value="part-time">Medio Tiempo</option>
+            </select>
+          </div>
+        </div>
+
+        <h5 class="border-bottom pb-2 mb-3 mt-4 text-secondary">Información Adicional y Emergencia</h5>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 col-12">
+            <label for="contactoEmergencia" class="form-label">Contacto de Emergencia <span class="text-asterisk">*</span></label>
+            <input type="text" class="form-control" id="contactoEmergencia" placeholder="Nombre completo y parentesco">
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="telEmergencia" class="form-label">Teléfono de Emergencia <span class="text-asterisk">*</span></label>
+            <input type="tel" class="form-control" id="telEmergencia" maxlength="9" placeholder="987654321">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="observaciones" class="form-label">Observaciones o Notas Adicionales <span class="text-muted">(Opcional)</span></label>
+          <textarea class="form-control" id="observaciones" rows="2" placeholder="Alergias, experiencia previa, disponibilidad de horario..."></textarea>
+        </div>
+
+        <div class="form-check mb-2 mt-4">
+          <input class="form-check-input" type="checkbox" id="terminos">
+          <label class="form-check-label small" for="terminos">
+            He leído y acepto las políticas de privacidad y protección de datos. <span class="text-asterisk">*</span>
+          </label>
+        </div>
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="declaracion">
+          <label class="form-check-label small" for="declaracion">
+            He leído y acepto la autorización del tratamiento de datos personales para usos adicionales. <span class="text-asterisk">*</span>
+          </label>
+        </div>
+
+        <div id="respuestaRegistro" class="respuesta" hidden></div>
+
+        <!-- Botones con clases transicionadas -->
+        <div class="d-flex gap-2 justify-content-center pt-2">
+          <button type="reset" class="btn btn-outline-danger px-4 fw-bold">Limpiar Datos</button>
+          <button type="submit" class="btn btn-mass px-4">Registrar Trabajador</button>
+        </div>
+        <!-- Paso 1: Formulario de Registro -->
+<form id="form-registro">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="email" id="correo" placeholder="Correo electrónico" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit" id="btn-enviar-codigo">Continuar y enviar código</button>
+</form>
+
+<!-- Paso 2: Verificación del código (Oculto inicialmente) -->
+<div id="seccion-verificacion" style="display: none; margin-top: 20px;">
+    <p>Hemos enviado un código de 6 dígitos a tu correo. Ingrésalo aquí:</p>
+    <input type="text" id="codigo-ingresado" maxlength="6" placeholder="Ej: 482910">
+    <button type="button" id="btn-verificar">Confirmar y Crear Cuenta</button>
+    <p id="mensaje-error" style="color: red;"></p>
+</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

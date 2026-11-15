@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Mass | Productos y Servicios</title>
+  <!-- Enlace al archivo CSS centralizado -->
+  <link rel="stylesheet" href="estilos.css?v=2">
+  <style>
+    /* Estilos específicos que solo aplican a esta página */
+    .contenedor { max-width: 95%; margin: 0 auto; padding: 0 20px; }
+    .hero { text-align: center; padding: 60px 20px; background-color: var(--mass-amarillo-claro); }
+    .hero h1 { font-size: 3.5rem; color: var(--mass-azul); margin-bottom: 20px; line-height: 1.1; }
+    .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; font-weight: bold; }
+    .seccion { padding: 50px 0; }
+    
+    .franja-oscura { background-color: var(--mass-amarillo-claro); border-top: 6px solid var(--mass-amarillo); }
+    .lista-valores { list-style: none; padding: 0; font-size: 1.1rem; }
+    .lista-valores li { margin-bottom: 15px; padding-left: 20px; border-left: 4px solid var(--mass-azul); }
+    .lista-valores strong { color: var(--mass-azul); font-size: 1.2rem; }
+    .pie { background-color: var(--mass-azul); color: white; padding: 20px 0; text-align: center; margin-top: 40px; }
+    .pie a { color: var(--mass-amarillo); text-decoration: none; }
+  
+  </style>
+  <link rel="stylesheet" href="mejoras.css">
+  <script src="datos.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Menú de navegación global -->
+<header class="encabezado">
+  <nav class="barra-nav">
+    <a href="index.html" class="marca" style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-decoration:none; font-weight:900;">TIENDA MASS</a>
+    <button type="button" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menuPrincipal">☰</button>
+    <ul id="menuPrincipal" class="nav-enlaces">
+      <li><a href="index.html">Acerca de nosotros</a></li>
+      <li><a href="productos.html" style="color: #d6b000;">Productos y servicios</a></li>
+      <li><a href="registro.html">Trabaja con nosotros</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Sección Hero (Título principal) -->
+<section class="hero seccion">
+  <div class="contenedor">
+    <h1 style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-transform: uppercase;">Nuestro Catálogo</h1>
+    <p>En Tienda Mass encontrarás productos esenciales para el hogar a precios bajos y una experiencia de compra rápida y cercana.</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    
+    <!-- Filtros del catálogo (JavaScript) -->
+    <div class="filtros" role="search">
+      <input type="search" id="buscar" class="campo" placeholder="Buscar producto o marca..." aria-label="Buscar producto o marca">
+      <select id="filtroCategoria" class="campo" aria-label="Filtrar por categoría">
+        <option value="todas">Todas las categorías</option>
+      </select>
+      <select id="orden" class="campo" aria-label="Ordenar productos">
+        <option value="">Orden original</option>
+        <option value="asc">Precio: menor a mayor</option>
+        <option value="desc">Precio: mayor a menor</option>
+      </select>
+    </div>
+    <p class="filtros-info" id="contador" aria-live="polite"></p>
+    <p class="sin-resultados" id="sinResultados" hidden>No encontramos productos con esos filtros. Prueba con otra búsqueda.</p>
+
+    <!-- ================= CATEGORÍA 1: ALIMENTOS ================= -->
+    <h2 class="categoria-titulo">Alimentos</h2>
+    <div class="catalogo-grid">
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/arroz.jpg" alt="Arroz Extra" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Costeño</span>
+          <h3>Arroz Extra</h3>
+          <p>Bolsa x 750 g</p>
+          <span class="precio">S/ 4.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/azucar.jpg" alt="Azúcar Rubia" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Cartavio</span>
+          <h3>Azúcar Rubia</h3>
+          <p>Bolsa x 1 kg</p>
+          <span class="precio">S/ 3.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/fideos.jpg" alt="Fideos Espagueti" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Don Vittorio</span>
+          <h3>Fideos Espagueti</h3>
+          <p>Paquete x 500 g</p>
+          <span class="precio">S/ 2.20</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/aceite.jpg" alt="Aceite Vegetal" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Primor</span>
+          <h3>Aceite Primiun</h3>
+          <p>Botella x 1 Litro</p>
+          <span class="precio">S/ 7.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/atun.jpg" alt="Atún en Trocitos" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Florida</span>
+          <h3>Atún en Trocitos</h3>
+          <p>Lata x 170 g</p>
+          <span class="precio">S/ 3.20</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= CATEGORÍA 2: BEBIDAS ================= -->
+    <h2 class="categoria-titulo">Bebidas</h2>
+    <div class="catalogo-grid">
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/agua.jpg" alt="Agua Mineral" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">San Luis</span>
+          <h3>Agua Sin Gas</h3>
+          <p>Botella x 2.5 Litros</p>
+          <span class="precio">S/ 2.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/gaseosa.jpg" alt="Gaseosa Cola" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Inca Kola</span>
+          <h3>Gaseosa Original</h3>
+          <p>Botella x 3 Litros</p>
+          <span class="precio">S/ 12.00</span>
+        </div>
+      </div>
+      
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/jugo.jpg" alt="Jugo de Durazno" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Frugos</span>
+          <h3>Jugo de Durazno</h3>
+          <p>Caja x 1 Litro</p>
+          <span class="precio">S/ 4.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/leche.jpg" alt="Leche Evaporada" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Gloria</span>
+          <h3>Leche Evaporada</h3>
+          <p>Tarro x 400 g</p>
+          <span class="precio">S/ 3.60</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= CATEGORÍA 3: LIMPIEZA ================= -->
+    <h2 class="categoria-titulo">Limpieza del Hogar</h2>
+    <div class="catalogo-grid">
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/detergente.jpg" alt="Detergente en Polvo" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Bolívar</span>
+          <h3>Detergente Polvo</h3>
+          <p>Bolsa x 800 g</p>
+          <span class="precio">S/ 7.00</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/lejia.jpg" alt="Lejía Tradicional" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Clorox</span>
+          <h3>Lejía Tradicional</h3>
+          <p>Botella x 1 Litro</p>
+          <span class="precio">S/ 2.20</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/limpiatodo.jpg" alt="Limpiatodo Lavanda" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Poett</span>
+          <h3>Limpiatodo Lavanda</h3>
+          <p>Botella x 900 ml</p>
+          <span class="precio">S/ 3.00</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/papel.jpg" alt="Papel Higiénico" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Suave</span>
+          <h3>Papel Higiénico</h3>
+          <p>Paquete x 4 rollos</p>
+          <span class="precio">S/ 4.50</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= CATEGORÍA 4: SNACKS ================= -->
+    <h2 class="categoria-titulo">Snacks y Golosinas</h2>
+    <div class="catalogo-grid">
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/galletas.jpg" alt="Galletas de Vainilla" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Field</span>
+          <h3>Galletas Vainilla</h3>
+          <p>Paquete x 6 und</p>
+          <span class="precio">S/ 3.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/chocolate.jpg" alt="Tableta de Chocolate" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Sublime</span>
+          <h3>Tableta Chocolate con leche</h3>
+          <p>Barra x 50 g</p>
+          <span class="precio">S/ 2.00</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/papas.jpg" alt="Papas Fritas Clásicas" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Lay's</span>
+          <h3>Papas Clásicas</h3>
+          <p>Bolsa x 38 g</p>
+          <span class="precio">S/ 1.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/caramelos.jpg" alt="Caramelos Surtidos" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Sayón</span>
+          <h3>Caramelos de Menta</h3>
+          <p>Bolsa x 100 und</p>
+          <span class="precio">S/ 3.50</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ================= CATEGORÍA 5: MASCOTAS ================= -->
+    <h2 class="categoria-titulo">Mascotas</h2>
+    <div class="catalogo-grid">
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/perro.jpg" alt="Alimento para Perros" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Ricocan</span>
+          <h3>Comida para Perros</h3>
+          <p>Bolsa x 1 kg</p>
+          <span class="precio">S/ 9.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/gato.jpg" alt="Alimento para Gatos" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Ricocat</span>
+          <h3>Comida para Gatos</h3>
+          <p>Bolsa x 1 kg</p>
+          <span class="precio">S/ 7.50</span>
+        </div>
+      </div>
+
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/pate.jpg" alt="Paté Mascotas" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Ricocan</span>
+          <h3>Paté Babycan</h3>
+          <p>Lata x 330 g</p>
+          <span class="precio">S/ 5.00</span>
+        </div>
+      </div>
+    
+      <div class="producto-card">
+        <div class="producto-img-container">
+          <img src="img/pate1.jpg" alt="Paté Gato" class="producto-img">
+        </div>
+        <div class="producto-info">
+          <span class="marca-producto">Ricocat</span>
+          <h3>Paté Gatitos</h3>
+          <p>Lata x 180 g</p>
+          <span class="precio">S/ 5.00</span>
+        </div>
+      </div>
+    </div>
+  
+</section>
+
+<!-- Sección de Servicios -->
+<section class="seccion franja-oscura">
+  <div class="contenedor">
+    <h2>Servicios que ofrecemos</h2>
+    <ul class="lista-valores">
+      <li><strong>Tiendas de cercanía:</strong> Locales ubicados cerca de los barrios para compras rápidas.</li>
+      <li><strong>Precios bajos:</strong> Modelo de descuento que permite ahorrar en productos esenciales.</li>
+      <li><strong>Promociones:</strong> Ofertas frecuentes en diferentes categorías.</li>
+      <li><strong>Compra rápida:</strong> Tiendas organizadas para una atención ágil.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Pie de página -->
+<!-- ================= PEDIDO (carrito + formulario) ================= -->
+<section class="seccion" id="pedido">
+  <div class="contenedor">
+    <h2 class="categoria-titulo">Haz tu pedido</h2>
+    <div class="pedido-grid">
+      <div class="carrito-box">
+        <h3>Tu carrito <span class="badge-cant" id="carritoCant">0</span></h3>
+        <ul class="carrito-lista" id="carritoLista"></ul>
+        <p class="carrito-vacio" id="carritoVacio">Aún no agregaste productos. Usa el botón “Agregar al pedido” del catálogo.</p>
+        <div class="carrito-linea"><span>Subtotal</span><span id="subTotal">S/ 0.00</span></div>
+        <div class="carrito-linea"><span>Delivery</span><span id="envio">S/ 0.00</span></div>
+        <div class="carrito-total"><span>Total</span><span id="carritoTotal">S/ 0.00</span></div>
+        <button type="button" id="vaciar" class="boton-mass boton-sec" disabled>Vaciar carrito</button>
+      </div>
+
+      <form id="formPedido" class="mass-form" novalidate>
+        <h3>Datos del pedido</h3>
+        <p class="nota">Los campos marcados con <span class="asterisco">*</span> son obligatorios.</p>
+        <label for="pNombre">Nombre completo <span class="asterisco">*</span></label>
+        <input type="text" id="pNombre" class="campo" placeholder="Ej. Juan Pérez">
+        <label for="pTelefono">Celular <span class="asterisco">*</span></label>
+        <input type="tel" id="pTelefono" class="campo" maxlength="9" placeholder="987654321">
+        <label>Tipo de entrega <span class="asterisco">*</span></label>
+        <div class="opciones">
+          <label><input type="radio" name="entrega" value="recojo" checked> Recojo en tienda</label>
+          <label><input type="radio" name="entrega" value="delivery"> Delivery (+ S/ 5.00)</label>
+        </div>
+        <label for="pLocal">Local <span class="asterisco">*</span></label>
+        <select id="pLocal" class="campo">
+          <option selected disabled>Seleccionar local...</option>
+          <option>Lima</option>
+          <option>Trujillo</option>
+          <option>Chiclayo</option>
+          <option>Piura</option>
+          <option>Chimbote</option>
+          <option>Arequipa</option>
+        </select>
+        <div id="grupoDireccion" class="oculto">
+          <label for="pDireccion">Dirección de entrega <span class="asterisco">*</span></label>
+          <input type="text" id="pDireccion" class="campo" placeholder="Av., Calle, N° o Dpto.">
+        </div>
+        <label for="pPago">Medio de pago <span class="asterisco">*</span></label>
+        <select id="pPago" class="campo">
+          <option selected disabled>Seleccionar...</option>
+          <option>Efectivo</option>
+          <option>Yape / Plin / QR</option>
+          <option>Tarjeta</option>
+        </select>
+        <label for="pNotas">Indicaciones (opcional)</label>
+        <textarea id="pNotas" class="campo" rows="2" placeholder="Ej. Tocar el timbre dos veces"></textarea>
+        <label class="check"><input type="checkbox" id="pAcepta"> Acepto las condiciones del pedido. <span class="asterisco">*</span></label>
+        <div class="acciones">
+          <button type="submit" class="btn-mass boton-mass">Confirmar pedido</button>
+          <button type="reset" class="boton-mass boton-sec">Limpiar</button>
+        </div>
+        <div id="respuestaPedido" class="respuesta" hidden></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="contenedor">
+    <span>© 2026 Tienda Mass</span> | 
+    <a href="#">Contáctanos</a>
+  </div>
+</footer>
+
+</body>
+</html>

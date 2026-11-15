@@ -1,0 +1,270 @@
+/* =========================================
+   1. VARIABLES GLOBALES Y CUERPO
+========================================= */
+:root {
+  --mass-amarillo: #FFD100;
+  --mass-amarillo-claro: #FFF7CC;
+  --mass-azul: #0033A0;
+  --mass-blanco: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--mass-azul);
+  background-color: var(--mass-blanco);
+}
+
+/* =========================================
+   2. USO DE LAYOUTS (FLEXBOX Y GRID)
+========================================= */
+/* Flexbox en la barra de navegación */
+.barra-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--mass-blanco);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-enlaces {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Grid en la sección "Acerca de nosotros" */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Grid Fijo de 4 columnas para el Catálogo de Productos */
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Esto fuerza las 4 columnas en fila */
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   3. USO DE TRANSICIONES (5 en total)
+========================================= */
+/* Transición 1: Enlaces del menú (cambio de color y escala) */
+.nav-enlaces a {
+  text-decoration: none;
+  color: var(--mass-azul);
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.nav-enlaces a:hover {
+  color: #d6b000;
+  transform: scale(1.1);
+}
+
+/* Transición 2: Botones generales e íconos (fondo, sombra y elevación) */
+.btn-mass, .card .icon {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.btn-mass:hover, .card:hover .icon {
+  background-color: #ebd600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+/* Transición 3: Entradas de los formularios (borde y sombra al hacer foco) */
+.form-control, .form-select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--mass-azul);
+  box-shadow: 0 0 8px rgba(0, 51, 160, 0.4);
+}
+
+/* =========================================
+   4. USO DE DOS ANIMACIONES
+========================================= */
+/* Animación 1: FadeInUp (Aparición suave hacia arriba) para las secciones */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.seccion, .page, .main-card {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Animación 2: Pulse (Latido) para el título principal o logo */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.hero h1, .marca {
+  animation: pulse 2.5s infinite;
+}
+
+/* =========================================
+   5. DISEÑO DE IMÁGENES Y TARJETAS
+========================================= */
+/* Requisito de la rúbrica: Imagen responsiva */
+.img-responsiva {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Título de categorías */
+.categoria-titulo {
+  color: var(--mass-azul);
+  font-size: 2rem;
+  border-left: 6px solid var(--mass-amarillo);
+  padding-left: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Tarjeta del Producto - Transición 4 (Elevación) */
+.producto-card {
+  background: var(--mass-blanco);
+  border: 2px solid var(--mass-amarillo-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: var(--mass-amarillo);
+}
+
+/* Contenedor de la foto de producto */
+.producto-img-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 10px;
+}
+
+/* Transición 5: Zoom a la foto al pasar el mouse */
+.producto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.producto-card:hover .producto-img {
+  transform: scale(1.15);
+}
+
+/* Información del producto y Marca */
+.producto-info {
+  padding: 15px 20px 25px;
+  background-color: var(--mass-amarillo-claro);
+}
+
+.marca-producto {
+  color: #777777;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  display: block;
+}
+
+.producto-info h3 {
+  color: var(--mass-azul);
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.producto-info p {
+  color: #444;
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+}
+
+.precio {
+  display: inline-block;
+  background-color: var(--mass-amarillo);
+  color: var(--mass-azul);
+  font-weight: 900;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 1.15rem;
+}
+
+/* =========================================
+   6. DISEÑO RESPONSIVO (MEDIA QUERIES)
+   Se coloca al final para evitar conflictos
+========================================= */
+
+/* 2do Dispositivo: TABLETS (768px a 991px) */
+@media (max-width: 991px) {
+  .hero h1 { font-size: 3rem; }
+  .marca { font-size: 2.8rem; }
+  
+  /* En tablets, el catálogo baja a 2 columnas */
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3er Dispositivo: MÓVILES (Menos de 768px) */
+@media (max-width: 767px) {
+  /* Navegación colapsa hacia abajo */
+  .barra-nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  .nav-enlaces {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero h1 { font-size: 2.2rem; }
+  .seccion h2 { font-size: 2rem; }
+  
+  /* Secciones de 2 columnas pasan a 1 columna */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  /* En celulares, el catálogo baja a 1 columna */
+  .catalogo-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+/* Transiciones suaves para elementos interactivos */
+button, input, .card {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilo para los mensajes del chat de soporte */
+.mensaje-cliente {
+    background-color: #e3f2fd;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+.mensaje-admin {
+    background-color: #f1f8e9;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 5px 0;
+    text-align: right;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de nosotros — Mass</title>
+  <!-- Enlace al archivo CSS centralizado -->
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Estilos específicos de esta página */
+    .page { max-width: 900px; margin: 0 auto; padding: 48px 32px; }
+    h1 { font-family: Cambria, Georgia, serif; font-size: 2.4rem; font-weight: 700; margin-bottom: 32px; text-align: center; }
+    .panel { background: var(--mass-amarillo); border-radius: 8px; padding: 32px; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+    .panel .logo { font-family: Cambria, Georgia, serif; font-size: 2.6rem; font-weight: 700; letter-spacing: 1px; color: var(--mass-azul); }
+    .panel .tagline { font-style: italic; font-size: 0.95rem; margin-top: 8px; }
+    .stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .stat { text-align: center; width: 140px; }
+    .stat .number { font-size: 1.4rem; font-weight: 700; }
+    .stat .label { font-size: 0.78rem; line-height: 1.3; opacity: 0.9; }
+    .quienes { background: var(--mass-amarillo-claro); border-radius: 8px; padding: 32px; margin-bottom: 24px; }
+    .quienes h2 { font-family: Cambria, Georgia, serif; font-size: 1.3rem; margin-bottom: 12px; }
+    .quienes p { font-size: 1rem; }
+    .card { background: var(--mass-amarillo-claro); border-radius: 8px; padding: 24px; }
+    .card .header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .card .icon { width: 40px; height: 40px; border-radius: 50%; background: var(--mass-amarillo); color: var(--mass-azul); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; flex-shrink: 0; }
+    .card h3 { font-family: Cambria, Georgia, serif; font-size: 1.15rem; }
+    .card p { font-size: 0.92rem; }
+
+    /* Sección de locales por región */
+    .locales { margin-top: 40px; }
+    .locales h2 { font-family: Cambria, Georgia, serif; font-size: 1.6rem; font-weight: 700; text-align: center; margin-bottom: 24px; }
+    .locales-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .local-card { margin: 0; background: var(--mass-amarillo-claro); border-radius: 8px; overflow: hidden; }
+    .local-card img { display: block; width: 100%; height: 160px; object-fit: cover; background: var(--mass-amarillo); }
+    .local-card figcaption { padding: 12px 16px; }
+    .local-card .ciudad { font-family: Cambria, Georgia, serif; font-weight: 700; font-size: 1.05rem; }
+    .local-card .region { font-size: 0.82rem; opacity: 0.85; }
+    @media (max-width: 700px) { .locales-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 450px) { .locales-grid { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="stylesheet" href="mejoras.css">
+  <script src="datos.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Menú de navegación global -->
+<header class="encabezado">
+  <nav class="barra-nav">
+    <a href="index.html" class="marca" style="text-shadow: 3px 3px 0px var(--mass-amarillo); text-decoration:none; font-weight:900;">TIENDA MASS</a>
+    <button type="button" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menuPrincipal">☰</button>
+    <ul id="menuPrincipal" class="nav-enlaces">
+      <li><a href="index.html" style="color: #d6b000;">Acerca de nosotros</a></li>
+      <li><a href="productos.html">Productos y servicios</a></li>
+      <li><a href="registro.html">Trabaja con nosotros</a></li>
+      <li><a href="encuesta.html">Encuesta</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page seccion">
+  <h1>Acerca de nosotros</h1>
+  <!-- AQUÍ AGREGAS LA IMAGEN RESPONSIVA -->
+  <img src="img/tienda-mass.jpg" loading="eager" alt="Fachada de tienda Mass" class="img-responsiva" style="max-width: 300px; margin-bottom: 30px;">
+  <div class="panel">
+    <div>
+      <div class="logo">MASS</div>
+      <div class="tagline">Bodega moderna del grupo Intercorp</div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="number">1998</div>
+        <div class="label">Año de fundación</div>
+      </div>
+      <div class="stat">
+        <div class="number">2016</div>
+        <div class="label">Reestructuración a bodega moderna</div>
+      </div>
+      <div class="stat">
+        <div class="number">+1,500</div>
+        <div class="label">Locales a nivel nacional</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quienes">
+    <h2>¿Quiénes somos?</h2>
+    <p>
+      Mass es la cadena de tiendas de descuento del grupo Intercorp, junto a Plaza Vea, Vivanda y Makro. Su modelo se basa en precios bajos, surtido reducido y costos operativos mínimos, lo que le permite competir directamente con la bodega de barrio tradicional. Su fortaleza está en el punto de venta físico: cercanía, rapidez y precio.
+    </p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="header">
+        <div class="icon">M</div>
+        <h3>Misión</h3>
+      </div>
+      <p>Proveer a las familias peruanas productos esenciales de alta calidad a precios bajos, con una estructura ágil y procesos optimizados que trasladan el ahorro al consumidor y construyen una relación de confianza basada en una excelente relación calidad-precio.</p>
+    </div>
+    <div class="card">
+      <div class="header">
+        <div class="icon">V</div>
+        <h3>Visión</h3>
+      </div>
+      <p>Ser la cadena de supermercados más confiable y preferida del Perú, liderando el mercado de tiendas de descuento y siendo la opción número uno para las familias peruanas, con un enfoque constante en innovación, eficiencia y sostenibilidad.</p>
+    </div>
+  </div>
+
+  <!-- Locales por región -->
+  <section class="locales">
+    <h2>Nuestros locales en el Perú</h2>
+    <div class="locales-grid">
+      <figure class="local-card">
+        <img src="img/locales/lima.jpg" alt="Tienda Mass en Lima" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Lima</div>
+          <div class="region">Lima y Callao</div>
+        </figcaption>
+      </figure>
+      <figure class="local-card">
+        <img src="img/locales/trujillo.jpg" alt="Tienda Mass en Trujillo" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Trujillo</div>
+          <div class="region">La Libertad</div>
+        </figcaption>
+      </figure>
+      <figure class="local-card">
+        <img src="img/locales/chiclayo.jpg" alt="Tienda Mass en Chiclayo" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Chiclayo</div>
+          <div class="region">Lambayeque</div>
+        </figcaption>
+      </figure>
+      <figure class="local-card">
+        <img src="img/locales/piura.jpg" alt="Tienda Mass en Piura" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Piura</div>
+          <div class="region">Piura</div>
+        </figcaption>
+      </figure>
+      <figure class="local-card">
+        <img src="img/locales/chimbote.jpg" alt="Tienda Mass en Chimbote" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Chimbote</div>
+          <div class="region">Áncash</div>
+        </figcaption>
+      </figure>
+      <figure class="local-card">
+        <img src="img/locales/arequipa.jpg" alt="Tienda Mass en Arequipa" loading="lazy">
+        <figcaption>
+          <div class="ciudad">Arequipa</div>
+          <div class="region">Arequipa</div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Formulario de contacto -->
+  <section class="contacto" id="contacto">
+    <h2>Contáctanos</h2>
+    <form id="formContacto" class="mass-form" novalidate>
+      <p class="nota">Los campos marcados con <span class="asterisco">*</span> son obligatorios.</p>
+      <div class="fila">
+        <div>
+          <label for="cNombre">Nombre completo <span class="asterisco">*</span></label>
+          <input type="text" id="cNombre" class="campo" placeholder="Ej. María Pérez">
+        </div>
+        <div>
+          <label for="cCorreo">Correo electrónico <span class="asterisco">*</span></label>
+          <input type="email" id="cCorreo" class="campo" placeholder="ejemplo@correo.com">
+        </div>
+        <div>
+          <label for="cAsunto">Tipo de mensaje <span class="asterisco">*</span></label>
+          <select id="cAsunto" class="campo">
+            <option selected disabled>Seleccionar...</option>
+            <option>Consulta</option>
+            <option>Sugerencia</option>
+            <option>Reclamo</option>
+            <option>Felicitación</option>
+          </select>
+        </div>
+        <div>
+          <label for="cLocal">Local relacionado <span class="asterisco">*</span></label>
+          <select id="cLocal" class="campo">
+            <option selected disabled>Seleccionar...</option>
+            <option>Lima</option>
+            <option>Trujillo</option>
+            <option>Chiclayo</option>
+            <option>Piura</option>
+            <option>Chimbote</option>
+            <option>Arequipa</option>
+          </select>
+        </div>
+      </div>
+      <label for="cMensaje">Mensaje <span class="asterisco">*</span></label>
+      <textarea id="cMensaje" class="campo" rows="4" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+      <label class="check"><input type="checkbox" id="cOfertas"> Quiero recibir las ofertas semanales de Mass (opcional).</label>
+      <label class="check"><input type="checkbox" id="cAcepta"> Acepto el tratamiento de mis datos personales. <span class="asterisco">*</span></label>
+      <div class="acciones">
+        <button type="submit" class="btn-mass boton-mass">Enviar mensaje</button>
+        <button type="reset" class="boton-mass boton-sec">Limpiar</button>
+      </div>
+      <div id="respuestaContacto" class="respuesta" hidden></div>
+    </form>
+  </section>
+</div>
+</body>
+</html>
